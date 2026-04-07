@@ -6,7 +6,7 @@
 #    By: clberube <charles.berube@polymtl.ca>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:21:42 by clberube          #+#    #+#              #
-#    Updated: 2026/04/07 14:33:06 by clberube         ###   ########.fr        #
+#    Updated: 2026/04/07 14:33:51 by clberube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,9 @@
 import os
 from pathlib import Path
 
-import umap
-import pandas as pd
 import numpy as np
 import torch
-import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
-from torch.autograd.functional import jacobian
-from scipy.stats import gaussian_kde
-from scipy.stats import norm
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-from sklearn.metrics import (
-    silhouette_score,
-    davies_bouldin_score,
-    calinski_harabasz_score,
-)
 
 from models import CVAE, cCardioid
 from utilities import train, predict
