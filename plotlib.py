@@ -33,7 +33,7 @@ def plot_learning_curves(losses, save=None):
         nll_plot,
         ls="-",
         color="0.5",
-        label=r"$\mathcal{L}_\textrm{NLL}$",
+        label=r"$\mathcal{L}_\mathrm{NLL}$",
     )
     ax.plot(
         range(1, sum(idx) + 1),
@@ -137,7 +137,6 @@ def plot_fit(all_results, samples=None, geom_factors=None, save=False):
 
         ax.legend(
             bbox_to_anchor=(0.0, 1.02, 1.0, 0.102),
-            fontsize=6,
             loc="lower left",
             ncols=2,
             mode="expand",

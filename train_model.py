@@ -6,7 +6,7 @@
 #    By: clberube <charles.berube@polymtl.ca>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:21:42 by clberube          #+#    #+#              #
-#    Updated: 2026/04/07 15:40:00 by clberube         ###   ########.fr        #
+#    Updated: 2026/04/07 16:16:47 by clberube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,14 @@ np.random.seed(RANDOM_SEED)
 device = "cpu"  # please use CPU for now
 
 # Some user-defined flags for saving and loading results
-TRAIN_MODEL = False
+TRAIN_MODEL = True
 SAVE_WEIGHTS = False
 LOAD_WEIGHTS = True
 SAVE_FIGURES = False
 SAVE_RESULTS = False
 
 # Number of maximum training epochs (assuming no early stopping)
-n_epoch = int(1e5)
+n_epoch = int(1e3)
 
 # User-defined directories
 wt_dir = Path("./weights")
