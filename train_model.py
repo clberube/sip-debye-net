@@ -6,7 +6,7 @@
 #    By: clberube <charles.berube@polymtl.ca>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:21:42 by clberube          #+#    #+#              #
-#    Updated: 2026/04/07 14:21:02 by clberube         ###   ########.fr        #
+#    Updated: 2026/04/07 14:33:06 by clberube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ from sklearn.metrics import (
 
 from models import CVAE, cCardioid
 from utilities import train, predict
-from plotlib import plot_learning_curves
+from plotlib import plot_learning_curves, plot_fit
 
 
 # For reproducibility
@@ -45,14 +45,14 @@ np.random.seed(RANDOM_SEED)
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Some user-defined flags for saving and loading results
-TRAIN_MODEL = True
-SAVE_WEIGHTS = True
+TRAIN_MODEL = False
+SAVE_WEIGHTS = False
 LOAD_WEIGHTS = True
-SAVE_FIGURES = True
-SAVE_RESULTS = True
+SAVE_FIGURES = False
+SAVE_RESULTS = False
 
 # Number of maximum training epochs (assuming no early stopping)
-n_epoch = int(1e3)
+n_epoch = int(1e5)
 
 # User-defined directories
 wt_dir = Path("./weights")
@@ -136,12 +136,25 @@ all_results = predict(
     n_reps=100,  # number of stochastic realizations per predictions
 )
 
+# Add data in the results dictionary
 all_results["frequencies"] = (
     freq_all[0].real.exp().unsqueeze(0).unsqueeze(0).cpu().numpy()
 )  # shared frequency axis
 
 all_results["R0"] = R0_all.unsqueeze(-1).unsqueeze(-1).numpy()
 
+all_results["data_all"] = data_all.cpu().numpy()
+all_results["err_all"] = err_all.cpu().numpy()
 
-data_all_norm = data_all.cpu().numpy()
-err_all_norm = err_all.cpu().numpy()
+
+plot_fit(
+    all_results,
+    samples=[9, 34, 78, 93],
+    geom_factors=[
+        0.00647,
+        0.00647,
+        4 * np.pi,
+        0.075,
+    ],  # geometrical factors (specific to measurement apparatus),
+    save=fig_dir,
+)
