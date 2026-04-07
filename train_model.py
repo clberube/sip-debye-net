@@ -6,7 +6,7 @@
 #    By: clberube <charles.berube@polymtl.ca>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 13:21:42 by clberube          #+#    #+#              #
-#    Updated: 2026/04/07 14:33:51 by clberube         ###   ########.fr        #
+#    Updated: 2026/04/07 15:40:00 by clberube         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ torch.manual_seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
 # There is no real advantage in using a GPU for this neural network
-device = "cuda" if torch.cuda.is_available() else "cpu"
+# device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cpu"  # please use CPU for now
 
 # Some user-defined flags for saving and loading results
 TRAIN_MODEL = False
