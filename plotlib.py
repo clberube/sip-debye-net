@@ -11,10 +11,6 @@ from matplotlib.ticker import ScalarFormatter
 from utilities import restore_minor_ticks_log_plot
 
 
-# My style sheet
-plt.style.use("seg.mplstyle")
-
-
 # Extend ScalarFormatter
 class MyScalarFormatter(ScalarFormatter):
     # Override '_set_format' with your own
